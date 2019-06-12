@@ -1,0 +1,1 @@
+spmia-licensing-service
