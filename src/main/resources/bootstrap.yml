@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: spmia-licensing-service
+  profiles:    active:    - default
+  cloud:    config:      uri:      - http://localhost:8888
