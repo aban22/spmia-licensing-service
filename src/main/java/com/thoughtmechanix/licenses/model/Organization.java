@@ -1,7 +1,6 @@
 package com.thoughtmechanix.licenses.model;
 
 public class Organization {
-
 	String id;
 	String name;
 	String contactName;
