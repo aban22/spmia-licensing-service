@@ -24,14 +24,7 @@ public class LicenseServiceController {
 
 	@GetMapping("/{licenseId}")
 	public License getLicense(@PathVariable("organizationId") String organizationId, @PathVariable("organizationId") String licenseId) {
-
-//		licenseService.getLicense(licenseId);
-		return License.builder()
-				.id(licenseId)
-				.organizationId(organizationId)
-				.productName("Teleco")
-				.licenseType("Seat")
-				.build();
+		return licenseService.getLicense(organizationId, licenseId);
 	}
 
 	@PutMapping("{licenseId}")
