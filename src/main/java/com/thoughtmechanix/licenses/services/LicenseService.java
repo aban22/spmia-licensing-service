@@ -5,9 +5,7 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
-import com.thoughtmechanix.licenses.clients.OrganizationDiscoveryClient;
 import com.thoughtmechanix.licenses.clients.OrganizationFeignClient;
-import com.thoughtmechanix.licenses.clients.OrganizationRestTemplateClient;
 import com.thoughtmechanix.licenses.config.ServiceConfig;
 import com.thoughtmechanix.licenses.model.License;
 import com.thoughtmechanix.licenses.model.Organization;
@@ -24,29 +22,11 @@ public class LicenseService {
     private final LicenseRepository licenseRepository;
     private final ServiceConfig config;
     private final OrganizationFeignClient organizationFeignClient;
-    private final OrganizationRestTemplateClient organizationRestClient;
-    private final OrganizationDiscoveryClient organizationDiscoveryClient;
-
 
     private Organization retrieveOrgInfo(String organizationId, String clientType) {
         Organization organization = null;
 
-        switch (clientType) {
-            case "feign":
-                log.info("I am using the feign client");
-                organization = organizationFeignClient.getOrganization(organizationId);
-                break;
-            case "rest":
-            	log.info("I am using the rest client");
-                organization = organizationRestClient.getOrganization(organizationId);
-                break;
-            case "discovery":
-            	log.info("I am using the discovery client");
-                organization = organizationDiscoveryClient.getOrganization(organizationId);
-                break;
-            default:
-                organization = organizationRestClient.getOrganization(organizationId);
-        }
+        organization = organizationFeignClient.getOrganization(organizationId);
 
         return organization;
     }
