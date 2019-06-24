@@ -1,3 +1,10 @@
 feign:
     hystrix:
         enabled: true
+
+security:
+  oauth2:
+    resource:
+      user-info-uri: http://localhost:8901/auth/user
+    client:
+      client-id: 1
